@@ -45,10 +45,13 @@ h2 { font-size: clamp(1.5rem, 3.5vw, 2.25rem); color: var(--color-brown); margin
     min-height: 120px;
     background: var(--color-cream);
     border-bottom: 1px solid var(--color-cream-dark);
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
 }
+body { padding-top: 120px; }
 .nav-links { display: flex; gap: 1.5rem; }
 .nav-links a { color: var(--color-brown); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
 .nav-links a:hover { color: var(--color-accent); }
@@ -58,13 +61,13 @@ h2 { font-size: clamp(1.5rem, 3.5vw, 2.25rem); color: var(--color-brown); margin
 .nav-logo .logo-fallback small { font-size: 0.7rem; font-weight: 400; color: var(--color-text-muted); }
 
 .hero {
-    min-height: 100vh;
+    min-height: calc(100vh - 120px);
     display: flex;
     align-items: center;
     padding: 2rem;
-    margin-top: 2rem;
+    margin-top: 0;
     background-image: url("../images/Inicio.png");
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
