@@ -317,13 +317,18 @@ footer {
     justify-content: center;
     gap: 2rem;
     margin-bottom: 1rem;
+    flex-wrap: wrap;
 }
 .footer-social a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     color: var(--color-brown);
     text-decoration: none;
     font-size: 0.95rem;
 }
 .footer-social a:hover { color: var(--color-accent); }
+.footer-social .footer-icon { flex-shrink: 0; }
 .footer-legal { font-size: 0.85rem; color: var(--color-text-muted); }
 
 /* Historia */
