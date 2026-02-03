@@ -9,8 +9,8 @@
     --color-accent: #A67B5B;
     --color-gold: #C9A962;
     --color-white: #FFFFFF;
-    --color-text: #3D3229;
-    --color-text-muted: #6B5B4F;
+    --color-text: #2D2320;
+    --color-text-muted: #4A3F36;
     --font-heading: 'Cormorant Garamond', 'Georgia', serif;
     --font-body: 'Outfit', 'Segoe UI', sans-serif;
     --shadow-soft: 0 4px 20px rgba(107, 83, 68, 0.08);
@@ -19,7 +19,7 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
-body { font-family: var(--font-body); color: var(--color-text); background: var(--color-cream); line-height: 1.6; overflow-x: hidden; }
+body { font-family: var(--font-body); color: var(--color-text); background: var(--color-cream); line-height: 1.7; overflow-x: hidden; }
 
 /* Full-page: cada sección ocupa toda la pantalla y se ve completa al hacer scroll */
 body.fullpage-scroll .hero,
@@ -32,11 +32,11 @@ body.fullpage-scroll .contact-section {
     scroll-snap-stop: always;
     padding-top: 160px; /* espacio para navbar + margen */
 }
-body.fullpage-scroll .hero { padding-top: 160px; } /* hero: navbar + espacio */
+body.fullpage-scroll .hero { min-height: 100vh; padding-top: 160px; }
 
 h1, h2, h3 { font-family: var(--font-heading); font-weight: 600; line-height: 1.2; }
-h1 { font-size: clamp(2rem, 4vw, 2.75rem); color: var(--color-brown-dark); }
-h2 { font-size: clamp(1.5rem, 3.5vw, 2.25rem); color: var(--color-brown); margin-bottom: 1rem; }
+h1 { font-size: clamp(2rem, 4vw, 2.75rem); color: var(--color-brown-dark); text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9); }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2.25rem); color: var(--color-brown); margin-bottom: 1rem; text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8); }
 
 /* Navbar */
 .navbar {
@@ -53,8 +53,9 @@ h2 { font-size: clamp(1.5rem, 3.5vw, 2.25rem); color: var(--color-brown); margin
     right: 0;
     z-index: 100;
 }
+:root { --header-height: 120px; }
 /* Espacio para que el contenido no quede bajo la cabecera fija */
-body { padding-top: 120px; }
+body { padding-top: var(--header-height); }
 
 .nav-links { display: flex; gap: 1.5rem; }
 .nav-links a {
@@ -96,13 +97,13 @@ body { padding-top: 120px; }
     color: var(--color-text-muted);
 }
 
-/* Hero - Layout dividido */
+/* Hero - La imagen se extiende por toda la pantalla incluyendo detrás de la cabecera */
 .hero {
-    min-height: calc(100vh - 120px);
+    min-height: 100vh;
+    margin-top: calc(-1 * var(--header-height));
     display: flex;
     align-items: center;
     padding: 2rem;
-    margin-top: 0;
     background-image: url("/images/inicio.png");
     background-size: cover;
     background-position: center;
@@ -135,7 +136,7 @@ body { padding-top: 120px; }
     font-size: 1.1rem;
     color: var(--color-text-muted);
     margin-bottom: 1.5rem;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 .hero .btn-primary {
     display: inline-flex;
@@ -157,25 +158,28 @@ body { padding-top: 120px; }
     box-shadow: var(--shadow-hover);
 }
 
-/* Hero description text */
+/* Hero description text - fondo semitransparente para legibilidad */
 .hero-description {
-    font-size: 1rem;
-    line-height: 1.75;
-    color: var(--color-text-muted);
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--color-text);
     margin-bottom: 1.5rem;
+    padding: 1.25rem;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
 }
 
 /* Section headers */
 .section-header { text-align: center; margin-bottom: 2.5rem; }
 .section-header h2 { font-size: clamp(1.65rem, 3.5vw, 2.35rem); }
-.section-header p { color: var(--color-text-muted); font-size: 1.1rem; max-width: 580px; margin: 0.5rem auto 0; line-height: 1.6; }
+.section-header p { color: var(--color-text-muted); font-size: 1.1rem; max-width: 580px; margin: 0.5rem auto 0; line-height: 1.75; }
 .section-icon { color: var(--color-gold); margin: 0 0.35rem; font-size: 0.9em; }
 
 /* Flavors */
 .flavors-section {
     padding: 4rem 1.5rem;
     background-image: url("/images/sabores.png");
-    background-size: cover;
+    background-size: auto auto; /* tamaño original, sin escalar */
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
@@ -222,13 +226,13 @@ body { padding-top: 120px; }
 }
 .flavor-image img { width: 100%; height: auto; max-height: 260px; object-fit: contain; }
 .flavor-card h3 { font-size: 1.5rem; color: var(--color-brown); margin: 1rem 0 0.6rem; }
-.flavor-card p { color: var(--color-text-muted); font-size: 1.05rem; padding: 0 1.25rem 1.5rem; line-height: 1.6; }
+.flavor-card p { color: var(--color-text); font-size: 1.05rem; padding: 0 1.25rem 1.5rem; line-height: 1.75; }
 
 /* Prices */
 .prices-section {
     padding: 4rem 1.5rem;
     background-image: url("/images/precios.png");
-    background-size: cover;
+    background-size: auto auto; /* tamaño original, sin escalar */
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
@@ -237,16 +241,17 @@ body { padding-top: 120px; }
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(237, 230, 220, 0.85);
+    background: rgba(247, 243, 238, 0.9);
     z-index: 0;
 }
 .prices-section .section-header,
 .prices-section .prices-table { position: relative; z-index: 1; }
 .prices-note-top {
     text-align: center;
-    color: var(--color-text-muted);
-    font-size: 1rem;
+    color: var(--color-text);
+    font-size: 1.05rem;
     margin-bottom: 1.5rem;
+    line-height: 1.7;
 }
 .prices-table {
     width: 100%;
@@ -268,7 +273,7 @@ body { padding-top: 120px; }
 .contact-section {
     padding: 4rem 1.5rem;
     background-image: url("/images/contacto.png");
-    background-size: cover;
+    background-size: auto auto; /* tamaño original, sin escalar */
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
@@ -280,7 +285,7 @@ body { padding-top: 120px; }
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(247, 243, 238, 0.85);
+    background: rgba(247, 243, 238, 0.9);
     z-index: 0;
 }
 .contact-section .section-header,
@@ -288,7 +293,7 @@ body { padding-top: 120px; }
 .contact-section footer { position: relative; z-index: 1; }
 .contact-section footer { margin-top: auto; padding-top: 2rem; }
 .contact-content { text-align: center; }
-.contact-content p { color: var(--color-text-muted); margin-bottom: 1.5rem; }
+.contact-content p { color: var(--color-text); margin-bottom: 1.5rem; font-size: 1.05rem; line-height: 1.8; }
 .btn-whatsapp {
     display: inline-flex;
     align-items: center;
@@ -339,7 +344,7 @@ footer {
 .historia-section {
     padding: 4rem 1.5rem;
     background-image: url("/images/Historia.png");
-    background-size: cover;
+    background-size: auto auto; /* tamaño original, sin escalar */
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
@@ -348,13 +353,13 @@ footer {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(247, 243, 238, 0.8);
+    background: rgba(247, 243, 238, 0.88);
     z-index: 0;
 }
 .historia-section .section-header,
 .historia-section .historia-content { position: relative; z-index: 1; }
 .historia-content { max-width: 700px; margin: 0 auto; text-align: center; }
-.historia-content p { color: var(--color-text-muted); margin-bottom: 1.25rem; line-height: 1.8; }
+.historia-content p { color: var(--color-text); margin-bottom: 1.25rem; line-height: 1.85; font-size: 1.05rem; }
 .historia-content p:last-child { margin-bottom: 0; }
 .historia-whatsapp {
     color: var(--color-brown);
