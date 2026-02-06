@@ -25,6 +25,7 @@ body.fullpage-scroll .hero,
 body.fullpage-scroll .historia-section,
 body.fullpage-scroll .flavors-section,
 body.fullpage-scroll .prices-section,
+body.fullpage-scroll .reviews-section,
 body.fullpage-scroll .contact-section {
     min-height: 100vh;
     scroll-snap-align: start;
@@ -123,6 +124,32 @@ body { padding-top: var(--header-height); }
 .prices-table th { background: var(--color-brown); color: var(--color-white); font-weight: 600; }
 .prices-table tr:nth-child(even) { background: var(--color-cream); }
 .prices-table .sabor { font-weight: 600; color: var(--color-brown); }
+
+.reviews-section {
+    padding: 4rem 1.5rem;
+    background: var(--color-cream-dark);
+    position: relative;
+}
+.reviews-section .section-header { margin-bottom: 2.5rem; }
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.review-card {
+    background: var(--color-white);
+    padding: 1.5rem 1.75rem;
+    border-radius: 16px;
+    border-left: 4px solid var(--color-accent);
+    box-shadow: var(--shadow-soft);
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--color-text);
+    margin: 0;
+}
 
 .contact-section {
     padding: 4rem 1.5rem;
