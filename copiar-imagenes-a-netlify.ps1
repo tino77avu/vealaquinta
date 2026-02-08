@@ -14,7 +14,8 @@ $imagenes = @(
     @{ Origen = "pistacho.png"; Destino = "pistacho.png" },
     @{ Origen = "precios.png"; Destino = "precios.png" },
     @{ Origen = "sabores.png"; Destino = "sabores.png" },
-    @{ Origen = "historia.png"; Destino = "Historia.png" }
+    @{ Origen = "historia.png"; Destino = "Historia.png" },
+    @{ Origen = "resena.png"; Destino = "resena.png" }
 )
 
 foreach ($img in $imagenes) {
